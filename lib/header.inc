@@ -440,9 +440,18 @@ if(isset($style_screen_ajout)) {
 			}
 		}
 	}
-}
-
-echo '	<!-- Fin des styles -->'."\n\n";
+} ?>
+<link rel="stylesheet" type="text/css" href="<?php echo $gepiPath; ?>/notjustagrid/css/reset.css"/>
+<!--<link rel="stylesheet" media="screen" href="<?php echo $gepiPath; ?>/notjustagrid/css/grid960.css" />
+<link rel="stylesheet" media="screen and (min-device-width: 1281px)" href="<?php echo $gepiPath; ?>/notjustagrid/css/grid1200.css" />
+<link rel="stylesheet" media="screen and (min-device-width: 1400px)" href="<?php echo $gepiPath; ?>/notjustagrid/css/grid1380.css" />-->
+<link rel="stylesheet" media="screen and (min-device-width: 1550px)" href="<?php echo $gepiPath; ?>/notjustagrid/css/grid1500.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $gepiPath; ?>/notjustagrid/css/type.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $gepiPath; ?>/notjustagrid/css/tables.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $gepiPath; ?>/notjustagrid/css/forms.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $gepiPath; ?>/notjustagrid/css/helpers.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $gepiPath; ?>/notjustagrid/css/ux.css" />
+<?php echo '	<!-- Fin des styles -->'."\n\n";
 /**
  * Réglage des couleurs
  */
@@ -862,7 +871,7 @@ elseif ($_SESSION["statut"] == "cpe") {
 		}
 	}
 }
-echo "<div id='container'>\n";
+echo "<div id='container' class='container'>\n";
 if ((isset($_GET['msg'])) or (isset($_POST['msg'])) or (isset($msg))) {
 	$msg = isset($_POST['msg']) ? unslashes($_POST['msg']) : (isset($_GET['msg']) ? unslashes($_GET['msg']) : $msg);
 	if ($msg != '') {

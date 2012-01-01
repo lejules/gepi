@@ -632,29 +632,35 @@ require_once("../lib/header.inc");
 //debug_var();
 
 ?>
+
+<div class="success">
+  <p style="font-size: x-large;color: green;font-weight: bold;">Toutes les informations ont été mises à jour</p>
+   <div></div>
+</div> 
+
 <p class=bold><a href="index.php#param_gen"<?php
 echo " onclick=\"return confirm_abandon (this, change, '$themessage')\"";
 ?>><img src='../images/icons/back.png' alt='Retour' class='back_link'/> Retour</a></p>
-<form action="param_gen.php" method="post" name="form1" style="width: 100%;">
+<form action="param_gen.php" method="post" name="form1" class="horizontal_form">
 <?php
 echo add_token_field();
 ?>
-<table style="width: 100%; border: 0;" cellpadding="5" cellspacing="5" summary='Paramètres'>
-	<tr>
-		<td style="width: 60%;font-variant: small-caps;">
-		Année scolaire :
-		</td>
-		<td><input type="text" name="gepiYear" size="20" value="<?php echo(getSettingValue("gepiYear")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Numéro RNE de l'établissement :
-		</td>
-		<td><input type="text" name="gepiSchoolRne" size="8" value="<?php echo(getSettingValue("gepiSchoolRne")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-
+<fieldset>
+      <legend>L'établissement</legend>
+      <ul>
+        <li>
+          <label for="annee">Année scolaire</label>
+          <input type="text" name="gepiYear" class="requiredfield" id="annee" size="20" value="<?php echo(getSettingValue("gepiYear")); ?>" onchange='changement()' />
+        </li>
+        <li>
+          <label for="rne">Numéro RNE</label>
+          <input type="text" id="rne" name="gepiSchoolRne" class="requiredfield" size="8" value="<?php echo(getSettingValue("gepiSchoolRne")); ?>" onchange='changement()' />
+          <div class="form_input_notes" id="name-notes">RNE ou UAI de l'établissement</div>
+        </li>
+      </ul>
+</fieldset>
+<!--<table style="width: 100%; border: 0;" cellpadding="5" cellspacing="5" summary='Paramètres'>-->
+<table class="plain" width="100%">
 	<tr>
 		<td style="font-variant: small-caps;">
 		Nom de l'établissement :
@@ -700,7 +706,7 @@ echo add_token_field();
 	<tr>
 		<td style="font-variant: small-caps;">
 		Pays :<br />
-		(<span style='font-style:italic;font-size:x-small'>Le pays est utilisé pour comparer avec celui des responsables dans les blocs adresse des courriers adressés aux responsables</span>)
+		(<!--<span style='font-style:italic;font-size:x-small'>-->Le pays est utilisé pour comparer avec celui des responsables dans les blocs adresse des courriers adressés aux responsables<!--</span>-->)
 		</td>
 		<td><input type="text" name="gepiSchoolPays" size="20" value="<?php echo(getSettingValue("gepiSchoolPays")); ?>" onchange='changement()' />
 		</td>
@@ -1267,7 +1273,7 @@ responsables&nbsp;:<br />
 </table>
 <input type="hidden" name="is_posted" value="1" />
 <center>
-	<input type="button" id="button_form_1" name = "OK" value="Enregistrer" style="font-variant: small-caps; display:none;" onclick="test_puis_submit()" />
+	<input class="confirm_button grey styled_button" type="button" id="button_form_1" name = "OK" value="Enregistrer" style="font-variant: small-caps; display:none;" onclick="test_puis_submit()" />
 	<noscript>
 		<input type="submit" name = "OK" value="Enregistrer" style="font-variant: small-caps;" />
 	</noscript>
