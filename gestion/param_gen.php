@@ -645,141 +645,113 @@ echo " onclick=\"return confirm_abandon (this, change, '$themessage')\"";
 <?php
 echo add_token_field();
 ?>
+  <fieldset>
+    <legend>Année scolaire</legend>
+    <ul>
+      <li>
+        <label for="annee">Année scolaire</label>
+        <input type="text" name="gepiYear" class="requiredfield" id="annee" size="20" value="<?php echo(getSettingValue("gepiYear")); ?>" onchange='changement()' />
+      </li>
+    </ul>
+  </fieldset>
 <fieldset>
-      <legend>L'établissement</legend>
-      <ul>
-        <li>
-          <label for="annee">Année scolaire</label>
-          <input type="text" name="gepiYear" class="requiredfield" id="annee" size="20" value="<?php echo(getSettingValue("gepiYear")); ?>" onchange='changement()' />
-        </li>
-        <li>
-          <label for="rne">Numéro RNE</label>
-          <input type="text" id="rne" name="gepiSchoolRne" class="requiredfield" size="8" value="<?php echo(getSettingValue("gepiSchoolRne")); ?>" onchange='changement()' />
-          <div class="form_input_notes" id="name-notes">RNE ou UAI de l'établissement</div>
-        </li>
-      </ul>
+  <legend>L'établissement</legend>
+  <ul>
+    <li>
+      <label for="rne">Numéro RNE</label>
+      <input type="text" id="rne" name="gepiSchoolRne" class="requiredfield" size="8" value="<?php echo(getSettingValue("gepiSchoolRne")); ?>" onchange='changement()' />
+      <div class="form_input_notes" id="rne-notes">RNE ou UAI de l'établissement</div>
+    </li>
+    <li>
+      <label for="nometab">Nom</label>
+      <input type="text" id="nometab" name="gepiSchoolName" size="20" value="<?php echo(getSettingValue("gepiSchoolName")); ?>" onchange='changement()' />
+      <div class="form_input_notes" id="nometab-notes">Nom de l'établissement</div>
+    </li>
+    <li>
+      <label for="statutetab">Statut</label>
+      <select name='gepiSchoolStatut' onchange='changement()'>
+        <option value='public'<?php if (getSettingValue("gepiSchoolStatut")=='public') echo " selected=\"selected\""; ?>>établissement public</option>
+        <option value='prive_sous_contrat'<?php if (getSettingValue("gepiSchoolStatut")=='prive_sous_contrat') echo " selected=\"selected\""; ?>>établissement privé sous contrat</option>
+        <option value='prive_hors_contrat'<?php if (getSettingValue("gepiSchoolStatut")=='prive_hors_contrat') echo " selected=\"selected\""; ?>>établissement privé hors contrat</option>
+      </select>
+      <div class="form_input_notes" id="statutetab-notes">utilisé pour certains documents officiels</div>
+    </li>
+    <li>
+      <label for="adresse">Adresse</label>
+      <input type="text" id="adresse" name="gepiSchoolAdress1" size="40" value="<?php echo(getSettingValue("gepiSchoolAdress1")); ?>" onchange='changement()' /><br />
+    </li>
+    <li>
+      <label for="bp">Boite postale</label>
+      <input type="text" id="bp" name="gepiSchoolAdress2" size="40" value="<?php echo(getSettingValue("gepiSchoolAdress2")); ?>" onchange='changement()' />
+      <div class="form_input_notes" id="bp-notes">Si elle existe, sinon complément d'adresse</div>
+    </li>
+    <li>
+      <label for="codepostal">Code postal</label>
+      <input type="text" id="codepostal" name="gepiSchoolZipCode" size="20" value="<?php echo(getSettingValue("gepiSchoolZipCode")); ?>" onchange='changement()' />
+    </li>
+    <li>
+      <label for="ville">Ville</label>
+      <input type="text" id="ville" name="gepiSchoolCity" size="20" value="<?php echo(getSettingValue("gepiSchoolCity")); ?>" onchange='changement()' />
+    </li>
+    <li>
+      <label for="pays">Pays</label>
+      <input type="text" id="pays" name="gepiSchoolPays" size="20" value="<?php echo(getSettingValue("gepiSchoolPays")); ?>" onchange='changement()' />
+      <div class="form_input_notes" id="pays-notes">Le pays est utilisé pour comparer avec celui des responsables dans les blocs adresse des courriers adressés aux responsables</div>
+    </li>
+    <li>
+      <label for="acad">Académie</label>
+      <input type="text" id="acad" name="gepiSchoolAcademie" size="20" value="<?php echo(getSettingValue("gepiSchoolAcademie")); ?>" onchange='changement()' />
+    </li>
+    <li>
+      <label for="tel">Téléphone</label>
+      <input type="text" id="tel" name="gepiSchoolTel" size="20" value="<?php echo(getSettingValue("gepiSchoolTel")); ?>" onchange='changement()' />
+    </li>
+    <li>
+      <label for="fax">Fax</label>
+      <input type="text" id="fax" name="gepiSchoolFax" size="20" value="<?php echo(getSettingValue("gepiSchoolFax")); ?>" onchange='changement()' />
+    </li>
+    <li>
+      <label for="courriel">Courriel</label>
+      <input type="text" id="courriel" name="gepiSchoolEmail" size="20" value="<?php echo(getSettingValue("gepiSchoolEmail")); ?>" onchange='changement()' />
+    </li>
+  </ul>
 </fieldset>
+  <fieldset>
+    <legend>Administrateur du site</legend>
+    <ul>
+      <li>
+        <label for="ad_nom">Nom</label>
+        <input type="text" id="ad_nom" name="gepiAdminNom" size="20" value="<?php echo(getSettingValue("gepiAdminNom")); ?>" onchange='changement()' />
+      </li>
+      <li>
+        <label for="ad_prenom">Prénom</label>
+        <input type="text" id="add_prenom" name="gepiAdminPrenom" size="20" value="<?php echo(getSettingValue("gepiAdminPrenom")); ?>" onchange='changement()' />
+      </li>
+      <li>
+        <label for="ad_fonction">Fonction</label>
+        <input type="text" id="ad_fonction" name="gepiAdminFonction" size="20" value="<?php echo(getSettingValue("gepiAdminFonction")); ?>" onchange='changement()' />
+        <div class="form_input_notes" id="ad_fonction-notes">Professeur, webmaster, personne ressource,...</div>
+      </li>
+      <li>
+        <label for="ad_courriel">Courriel</label>
+        <input type="text" id="add_courriel" name="gepiAdminAdress" size="20" value="<?php echo(getSettingValue("gepiAdminAdress")); ?>" onchange='changement()' />
+        <div class="form_input_notes" id="ad_courriel-notes">Courriel de renvoi des messages des utilisateurs si nécessaire</div>
+      </li>
+      <li>
+        <label for="gepiAdminAdressPageLogin">Page de login</label>
+        <input type="checkbox" id='gepiAdminAdressPageLogin' name="gepiAdminAdressPageLogin" value="y" <?php if(getSettingValue("gepiAdminAdressPageLogin")!='n'){echo " checked";} ?> onchange='changement()' />
+        <div class="form_input_notes" id="ad_courriel-notes">Faire apparaitre le lien [Contacter l'administrateur] sur la page de login</div>
+      </li>
+    </ul>
+  </fieldset>
 <!--<table style="width: 100%; border: 0;" cellpadding="5" cellspacing="5" summary='Paramètres'>-->
 <table class="plain" width="100%">
-	<tr>
-		<td style="font-variant: small-caps;">
-		Nom de l'établissement :
-		</td>
-		<td><input type="text" name="gepiSchoolName" size="20" value="<?php echo(getSettingValue("gepiSchoolName")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Statut de l'établissement :<br />
-		(<span style='font-style:italic;font-size:x-small'>utilisé pour certains documents officiels</span>)
-		</td>
-		<td>
-                    <select name='gepiSchoolStatut' onchange='changement()'>
-			<option value='public'<?php if (getSettingValue("gepiSchoolStatut")=='public') echo " SELECTED"; ?>>établissement public</option>
-			<option value='prive_sous_contrat'<?php if (getSettingValue("gepiSchoolStatut")=='prive_sous_contrat') echo " SELECTED"; ?>>établissement privé sous contrat</option>
-			<option value='prive_hors_contrat'<?php if (getSettingValue("gepiSchoolStatut")=='prive_hors_contrat') echo " SELECTED"; ?>>établissement privé hors contrat</option>
-                    </select>
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Adresse de l'établissement :
-		</td>
-		<td><input type="text" name="gepiSchoolAdress1" size="40" value="<?php echo(getSettingValue("gepiSchoolAdress1")); ?>" onchange='changement()' /><br />
-		<input type="text" name="gepiSchoolAdress2" size="40" value="<?php echo(getSettingValue("gepiSchoolAdress2")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Code postal :
-		</td>
-		<td><input type="text" name="gepiSchoolZipCode" size="20" value="<?php echo(getSettingValue("gepiSchoolZipCode")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Ville :
-		</td>
-		<td><input type="text" name="gepiSchoolCity" size="20" value="<?php echo(getSettingValue("gepiSchoolCity")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Pays :<br />
-		(<!--<span style='font-style:italic;font-size:x-small'>-->Le pays est utilisé pour comparer avec celui des responsables dans les blocs adresse des courriers adressés aux responsables<!--</span>-->)
-		</td>
-		<td><input type="text" name="gepiSchoolPays" size="20" value="<?php echo(getSettingValue("gepiSchoolPays")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Académie :<br />
-		(<span style='font-style:italic;font-size:x-small'>utilisé pour certains documents officiels</span>)
-		</td>
-		<td><input type="text" name="gepiSchoolAcademie" size="20" value="<?php echo(getSettingValue("gepiSchoolAcademie")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Téléphone établissement :
-		</td>
-		<td><input type="text" name="gepiSchoolTel" size="20" value="<?php echo(getSettingValue("gepiSchoolTel")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Fax établissement :
-		</td>
-		<td><input type="text" name="gepiSchoolFax" size="20" value="<?php echo(getSettingValue("gepiSchoolFax")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		E-mail établissement :
-		</td>
-		<td><input type="text" name="gepiSchoolEmail" size="20" value="<?php echo(getSettingValue("gepiSchoolEmail")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Nom de l'administrateur du site :
-		</td>
-		<td><input type="text" name="gepiAdminNom" size="20" value="<?php echo(getSettingValue("gepiAdminNom")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Prénom de l'administrateur du site :
-		</td>
-		<td><input type="text" name="gepiAdminPrenom" size="20" value="<?php echo(getSettingValue("gepiAdminPrenom")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Fonction de l'administrateur du site :
-		</td>
-		<td><input type="text" name="gepiAdminFonction" size="20" value="<?php echo(getSettingValue("gepiAdminFonction")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		Email de l'administrateur du site :
-		</td>
-		<td><input type="text" name="gepiAdminAdress" size="20" value="<?php echo(getSettingValue("gepiAdminAdress")); ?>" onchange='changement()' />
-		</td>
-	</tr>
-	<tr>
-		<td style="font-variant: small-caps;">
-		<label for='gepiAdminAdressPageLogin' style='cursor: pointer;'>Faire apparaitre le lien [Contacter l'administrateur] sur la page de login :</label>
-		</td>
-		<td>
-		<input type="checkbox" id='gepiAdminAdressPageLogin' name="gepiAdminAdressPageLogin" value="y"
-		<?php
-			if(getSettingValue("gepiAdminAdressPageLogin")!='n'){echo " checked";}
-		?>
-		onchange='changement()' />
-		</td>
-	</tr>
+  <thead>
+    <th>Réglage</th>
+    <th>Valeur</th>
+  </thead>
+  <tbody>
+
 	<tr>
 		<td style="font-variant: small-caps;">
 		<label for='gepiAdminAdressFormHidden' style='cursor: pointer;'>Faire apparaitre l'adresse de l'administrateur dans le formulaire [Contacter l'administrateur] :</label>
@@ -1270,6 +1242,7 @@ responsables&nbsp;:<br />
 		<td><input type="text" name="num_enregistrement_cnil" size="20" value="<?php echo(getSettingValue("num_enregistrement_cnil")); ?>" onchange='changement()' />
 		</td>
 	</tr>
+  </tbody>
 </table>
 <input type="hidden" name="is_posted" value="1" />
 <center>
